@@ -5,6 +5,8 @@ import (
 )
 
 const spanish = "Spanish"
+const french = "French"
+
 const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloPrefix = "Bonjour, "
@@ -15,9 +17,9 @@ func Hello(name, language string) string {
 	}
 
 	switch language {
-	case "Spanish":
+	case spanish:
 		return spanishHelloPrefix + name
-	case "French":
+	case french:
 		return frenchHelloPrefix + name
 	default:
 		return englishHelloPrefix + name
