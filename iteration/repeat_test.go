@@ -27,6 +27,15 @@ func TestCountRepeat(t *testing.T) {
 	}
 }
 
+func TestRepeatRepeat(t *testing.T) {
+	strlib := strings.Repeat("a", 5)
+	custom := Repeat("a", 5)
+
+	if custom != strlib {
+		t.Errorf("the stdlib Repeat output is %q, the custom Repeat func output is %q", strlib, custom)
+	}
+}
+
 func BenchmarkRepeat(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Repeat("a", 5)
