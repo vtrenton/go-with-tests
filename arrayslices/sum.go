@@ -8,3 +8,10 @@ func Sum(nums []int) int {
 
 	return sum
 }
+
+func SumAll(a, b []int) []int {
+	var outslice []int
+	outslice = append(outslice, Sum(a))
+	outslice = append(outslice, Sum(b))
+	return outslice
+}
