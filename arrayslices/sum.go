@@ -19,10 +19,11 @@ func SumAll(numbersToSum ...[]int) []int {
 }
 
 func SumAllTails(tailsToChase ...[]int) []int {
-	var tails []int
+	var sums []int
 	for _, num := range tailsToChase {
-		tails = append(tails, num[len(num)-1])
+		tail := num[1:]
+		sums = append(sums, Sum(tail))
 	}
 
-	return tails
+	return sums
 }
