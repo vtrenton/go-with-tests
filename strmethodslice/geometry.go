@@ -1,9 +1,14 @@
 package geometry
 
-func Perimiter(width, height float64) float64 {
-	return 2 * (width + height)
+type Rectangle struct {
+	Width  float64
+	Height float64
 }
 
-func Area(width, height float64) float64 {
-	return width * height
+func Perimiter(rec Rectangle) float64 {
+	return 2 * (rec.Width + rec.Height)
+}
+
+func Area(rec Rectangle) float64 {
+	return rec.Width * rec.Height
 }
