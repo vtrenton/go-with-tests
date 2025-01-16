@@ -15,7 +15,7 @@ func TestPerimiter(t *testing.T) {
 func TestArea(t *testing.T) {
 	t.Run("rectangles", func(t *testing.T) {
 		rect := Rectangle{12.0, 6.0}
-		got := Area(rect)
+		got := rect.Area()
 		want := 72.0
 
 		if got != want {
@@ -24,11 +24,11 @@ func TestArea(t *testing.T) {
 	})
 	t.Run("circles", func(t *testing.T) {
 		circle := Circle{10}
-		got := Area(circle)
+		got := circle.Area()
 		want := 314.1592653589793
 
 		if got != want {
-			t.Error("got %v want %v", got, want)
+			t.Errorf("got %v want %v\n", got, want)
 		}
 	})
 }

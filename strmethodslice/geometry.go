@@ -19,6 +19,6 @@ func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
 }
 
-func (r Circle) Area() float64 {
+func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
