@@ -31,3 +31,7 @@ func (r Rectangle) Area() float64 {
 func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
+
+func (t Triangle) Area() float64 {
+	return (t.Base * t.Height) * 0.5
+}
