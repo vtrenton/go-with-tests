@@ -1,7 +1,6 @@
 package wallet
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -11,8 +10,6 @@ func TestWallet(t *testing.T) {
 	wallet.Deposit(10)
 
 	got := wallet.Balance()
-
-	fmt.Printf("the address of balance in test is %p", &wallet.balance)
 
 	want := 10
 
