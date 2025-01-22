@@ -8,8 +8,8 @@ type Stringer interface {
 	String() string
 }
 
-func (b Bitcoin) String() {
-	fmt.Sprintf("%d BTC", b)
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
 }
 
 type Wallet struct {
