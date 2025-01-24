@@ -13,13 +13,17 @@ func (b Bitcoin) String() string {
 }
 
 type Wallet struct {
-	balance int
+	balance Bitcoin
 }
 
-func (w *Wallet) Deposit(amount int) {
+func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
 }
 
-func (w *Wallet) Balance() int {
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	w.balance -= amount
+}
+
+func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
