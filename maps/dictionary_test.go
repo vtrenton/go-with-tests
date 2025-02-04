@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
@@ -68,6 +70,30 @@ func TestUpdate(t *testing.T) {
 
 		assertError(t, err, ErrWordExists)
 		assertDefininition(t, dictionary, word, definition)
+	})
+}
+
+func TestDelete(t *testing.T) {
+	t.Run("existing word", func(t *testing.T) {
+		word := "test"
+		dictionary := Dictionary{"test": "test Definition"}
+
+		err := dictionary.Delete(word)
+		assertError(t, err, nil)
+
+		_, err = dictionary.Search(word)
+		assertError(t, err, ErrNotFound)
+	})
+
+	t.Run("non-existing word", func(t *testing.T) {
+		word := "test"
+		dictionary := Dictionary{"test": "test Definition"}
+
+		err := dictionary.Delete(word)
+		assertError(t, err, nil)
+
+		_, err = dictionary.Search(word)
+		assertError(t, err, ErrWordDoesNotExist)
 	})
 }
 
