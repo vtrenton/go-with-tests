@@ -9,8 +9,6 @@ import (
 
 const FinalWord = "Go!"
 const CountdownStart = 3
-const FinalWord = "Go!"
-const CountdownStart = 3
 const write = "write"
 const sleep = "sleep"
 
