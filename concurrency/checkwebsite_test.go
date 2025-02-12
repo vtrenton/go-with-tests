@@ -1,7 +1,7 @@
 package concurrency
 
 import (
-	"slices"
+	"maps"
 	"testing"
 )
 
@@ -10,13 +10,13 @@ func mockWebsiteChecker(url string) bool {
 }
 
 func TestCheckWebsites(t *testing.T) {
-	websites []string {
+	websites := []string{
 		"http://google.com",
 		"http://blog.gypsydave5.com",
 		"waat://furhurterwe.geds",
 	}
 
-	want := map[string]bool {
+	want := map[string]bool{
 		"http://google.com":          true,
 		"http://blog.gypsydave5.com": true,
 		"waat://furhurterwe.geds":    false,
@@ -24,7 +24,7 @@ func TestCheckWebsites(t *testing.T) {
 
 	got := CheckWebsites(mockWebsiteChecker, websites)
 
-	if !slices.Equal(want, got) {
-		t.Fatalf("wanted %q got %q", want, got)
+	if !maps.Equal(want, got) {
+		t.Fatalf("wanted %v got %v", want, got)
 	}
 }
