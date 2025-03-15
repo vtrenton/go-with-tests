@@ -11,8 +11,8 @@ type Person struct {
 }
 
 type Profile struct {
-	Age  int
-	City string
+	Age      int
+	Location string
 }
 
 func TestWalk(t *testing.T) {
@@ -103,6 +103,27 @@ func TestWalk(t *testing.T) {
 
 		assertContains(t, got, "Moo")
 		assertContains(t, got, "Baa")
+	})
+
+	t.Run("with channels", func(t *testing.T) {
+		aChannel := make(chan Profile)
+
+		go func() {
+			aChannel <- Profile{33, "Canada"}
+			aChannel <- Profile{38, "Spain"}
+			close(aChannel)
+		}()
+
+		var got []string
+		want := []string{"Canada", "Spain"}
+
+		walk(aChannel, func(input string) {
+			got = append(got, input)
+		})
+
+		if !slices.Equal(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
 	})
 }
 
