@@ -11,10 +11,25 @@ import (
 type SpyStore struct {
 	response  string
 	cancelled bool
+	t         *testing.T
 }
 
 func (s *SpyStore) Fetch() string {
 	return s.response
+}
+
+func (s *SpyStore) AssertWasCancelled() {
+	s.t.Helper()
+	if !s.cancelled {
+		s.t.Error("store was not told to cancel")
+	}
+}
+
+func (s *SpyStore) AssertWasNotCancelled() {
+	s.t.Helper()
+	if s.cancelled {
+		s.t.Error("store was told to cancel")
+	}
 }
 
 func (s *SpyStore) Cancel() {
@@ -37,9 +52,7 @@ func TestServer(t *testing.T) {
 			t.Errorf("got %s want %s", response.Body.String(), data)
 		}
 
-		if store.cancelled {
-			t.Errorf("should not have been cancelled")
-		}
+		store.AssertWasNotCancelled()
 	})
 
 	t.Run("tells store to cancel work if cancel is requested", func(t *testing.T) {
@@ -57,8 +70,7 @@ func TestServer(t *testing.T) {
 
 		svr.ServeHTTP(response, request)
 
-		if !store.cancelled {
-			t.Errorf("store was not told to cancel")
-		}
+		store.AssertWasCancelled()
+
 	})
 }
