@@ -14,6 +14,12 @@ func ConvertToRoman(arabic int) string {
 		case arabic > 3:
 			result.WriteString("IV")
 			arabic -= 4
+		case arabic > 9:
+			result.WriteString("X")
+			arabic -= 10
+		case arabic > 8:
+			result.WriteString("IX")
+			arabic -= 9
 		default:
 			result.WriteString("I")
 			arabic--
