@@ -25,7 +25,7 @@ var allRomanNumerals = []RomanNumeral{
 	{1, "I"},
 }
 
-func ConvertToRoman(arabic int) string {
+func ConvertToRoman(arabic uint16) string {
 	var result strings.Builder
 
 	for _, numeral := range allRomanNumerals {
