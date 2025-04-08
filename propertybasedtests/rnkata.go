@@ -5,7 +5,7 @@ import (
 )
 
 type RomanNumeral struct {
-	Value  int
+	Value  uint16
 	Symbol string
 }
 
@@ -37,8 +37,8 @@ func ConvertToRoman(arabic uint16) string {
 	return result.String()
 }
 
-func ConvertToArabic(roman string) int {
-	var arabic int
+func ConvertToArabic(roman string) uint16 {
+	var arabic uint16
 	for _, numeral := range allRomanNumerals {
 		for strings.HasPrefix(roman, numeral.Symbol) {
 			arabic += numeral.Value
